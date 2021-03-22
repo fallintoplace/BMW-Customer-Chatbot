@@ -1,0 +1,539 @@
+{
+  "$kind": "Microsoft.AdaptiveDialog",
+  "$designer": {
+    "$designer": {
+      "name": "BMWCustomerService",
+      "description": "",
+      "id": "lufqNh"
+    }
+  },
+  "autoEndDialog": true,
+  "defaultResultProperty": "dialog.result",
+  "triggers": [
+    {
+      "$kind": "Microsoft.OnConversationUpdateActivity",
+      "$designer": {
+        "id": "376720"
+      },
+      "actions": [
+        {
+          "$kind": "Microsoft.Foreach",
+          "$designer": {
+            "id": "518944",
+            "name": "Loop: for each item"
+          },
+          "itemsProperty": "turn.Activity.membersAdded",
+          "actions": [
+            {
+              "$kind": "Microsoft.IfCondition",
+              "$designer": {
+                "id": "641773",
+                "name": "Branch: if/else"
+              },
+              "condition": "string(dialog.foreach.value.id) != string(turn.Activity.Recipient.id)",
+              "actions": [
+                {
+                  "$kind": "Microsoft.SendActivity",
+                  "$designer": {
+                    "id": "9SDH21"
+                  },
+                  "activity": "${SendActivity_9SDH21()}"
+                },
+                {
+                  "$kind": "Microsoft.SendActivity",
+                  "$designer": {
+                    "id": "859266",
+                    "name": "Send a response"
+                  },
+                  "activity": "${SendActivity_Welcome()}"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "$kind": "Microsoft.OnIntent",
+      "$designer": {
+        "id": "a2tCgB",
+        "name": "BMWLatest"
+      },
+      "intent": "BMWLatest",
+      "actions": [
+        {
+          "$kind": "Microsoft.SendActivity",
+          "$designer": {
+            "id": "XN79fg"
+          },
+          "activity": "${SendActivity_XN79fg()}"
+        },
+        {
+          "$kind": "Microsoft.SendActivity",
+          "$designer": {
+            "id": "0RsOPv",
+            "name": "Send a response"
+          },
+          "activity": "${SendActivity_0RsOPv()}"
+        }
+      ]
+    },
+    {
+      "$kind": "Microsoft.OnIntent",
+      "$designer": {
+        "id": "v66L6q",
+        "name": "Recommender"
+      },
+      "intent": "Recommender",
+      "actions": [
+        {
+          "$kind": "Microsoft.SendActivity",
+          "$designer": {
+            "id": "2Tej2w"
+          },
+          "activity": "${SendActivity_2Tej2w()}"
+        },
+        {
+          "$kind": "Microsoft.SendActivity",
+          "$designer": {
+            "id": "Ik0YzL"
+          },
+          "activity": "${SendActivity_Ik0YzL()}"
+        },
+        {
+          "$kind": "Microsoft.SendActivity",
+          "$designer": {
+            "id": "m36DoX",
+            "name": "Send a response"
+          },
+          "activity": "${SendActivity_m36DoX()}"
+        }
+      ]
+    },
+    {
+      "$kind": "Microsoft.OnIntent",
+      "$designer": {
+        "id": "I3WrzG",
+        "name": "General"
+      },
+      "intent": "General",
+      "actions": [
+        {
+          "$kind": "Microsoft.SendActivity",
+          "$designer": {
+            "id": "a2pFY4"
+          },
+          "activity": "${SendActivity_a2pFY4()}"
+        },
+        {
+          "$kind": "Microsoft.SendActivity",
+          "$designer": {
+            "id": "eydKfC"
+          },
+          "activity": "${SendActivity_eydKfC()}"
+        },
+        {
+          "$kind": "Microsoft.ChoiceInput",
+          "$designer": {
+            "id": "Ogo8J8"
+          },
+          "defaultLocale": "en-us",
+          "disabled": false,
+          "maxTurnCount": 3,
+          "alwaysPrompt": true,
+          "allowInterruptions": false,
+          "prompt": "${ChoiceInput_Prompt_Ogo8J8()}",
+          "unrecognizedPrompt": "",
+          "invalidPrompt": "",
+          "defaultValueResponse": "",
+          "recognizerOptions": {
+            "recognizeOrdinals": true,
+            "recognizeNumbers": true
+          },
+          "choiceOptions": {
+            "includeNumbers": true
+          },
+          "property": "user.input",
+          "choices": [
+            "Yes",
+            "No"
+          ]
+        },
+        {
+          "$kind": "Microsoft.SwitchCondition",
+          "$designer": {
+            "id": "q63WLU"
+          },
+          "condition": "user.input",
+          "cases": [
+            {
+              "value": "Yes",
+              "actions": [
+                {
+                  "$kind": "Microsoft.SendActivity",
+                  "$designer": {
+                    "id": "apYQeZ"
+                  },
+                  "activity": "${SendActivity_apYQeZ()}"
+                }
+              ]
+            },
+            {
+              "value": "No",
+              "actions": [
+                {
+                  "$kind": "Microsoft.SendActivity",
+                  "$designer": {
+                    "id": "YFI04F"
+                  },
+                  "activity": "${SendActivity_YFI04F()}"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "$kind": "Microsoft.SendActivity",
+          "$designer": {
+            "id": "iNOTtC",
+            "name": "Send a response"
+          },
+          "activity": "${SendActivity_iNOTtC()}"
+        }
+      ]
+    },
+    {
+      "$kind": "Microsoft.OnUnknownIntent",
+      "$designer": {
+        "id": "dXOfAw"
+      },
+      "actions": [
+        {
+          "$kind": "Microsoft.SendActivity",
+          "$designer": {
+            "id": "J0CbJk"
+          },
+          "activity": "${SendActivity_J0CbJk()}"
+        },
+        {
+          "$kind": "Microsoft.ChoiceInput",
+          "$designer": {
+            "id": "ODZGQn"
+          },
+          "defaultLocale": "en-us",
+          "disabled": false,
+          "maxTurnCount": 3,
+          "alwaysPrompt": true,
+          "allowInterruptions": false,
+          "prompt": "${ChoiceInput_Prompt_ODZGQn()}",
+          "unrecognizedPrompt": "",
+          "invalidPrompt": "",
+          "defaultValueResponse": "",
+          "recognizerOptions": {
+            "recognizeOrdinals": true,
+            "recognizeNumbers": true
+          },
+          "choiceOptions": {
+            "includeNumbers": true
+          },
+          "property": "user.input",
+          "choices": [
+            "Yes",
+            "No"
+          ]
+        },
+        {
+          "$kind": "Microsoft.SwitchCondition",
+          "$designer": {
+            "id": "n6Ybev"
+          },
+          "condition": "user.input",
+          "cases": [
+            {
+              "value": "Yes",
+              "actions": [
+                {
+                  "$kind": "Microsoft.SendActivity",
+                  "$designer": {
+                    "id": "4sPC7r"
+                  },
+                  "activity": "${SendActivity_4sPC7r()}"
+                }
+              ]
+            },
+            {
+              "value": "No",
+              "actions": [
+                {
+                  "$kind": "Microsoft.SendActivity",
+                  "$designer": {
+                    "id": "bgkntn"
+                  },
+                  "activity": "${SendActivity_bgkntn()}"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "$kind": "Microsoft.SendActivity",
+          "$designer": {
+            "id": "5dlm09"
+          },
+          "activity": "${SendActivity_5dlm09()}"
+        }
+      ]
+    },
+    {
+      "$kind": "Microsoft.OnIntent",
+      "$designer": {
+        "id": "I4IBMz",
+        "name": "BuildPrice"
+      },
+      "intent": "BuildPrice",
+      "actions": [
+        {
+          "$kind": "Microsoft.SendActivity",
+          "$designer": {
+            "id": "qdOUxt"
+          },
+          "activity": "${SendActivity_qdOUxt()}"
+        },
+        {
+          "$kind": "Microsoft.SendActivity",
+          "$designer": {
+            "id": "jV65RJ",
+            "name": "Send a response"
+          },
+          "activity": "${SendActivity_jV65RJ()}"
+        }
+      ]
+    },
+    {
+      "$kind": "Microsoft.OnIntent",
+      "$designer": {
+        "id": "egLVob",
+        "name": "VirtualAppointment"
+      },
+      "intent": "VirtualAppointment",
+      "actions": [
+        {
+          "$kind": "Microsoft.SendActivity",
+          "$designer": {
+            "id": "6oyfYZ"
+          },
+          "activity": "${SendActivity_6oyfYZ()}"
+        },
+        {
+          "$kind": "Microsoft.SendActivity",
+          "$designer": {
+            "id": "PmKM8z",
+            "name": "Send a response"
+          },
+          "activity": "${SendActivity_PmKM8z()}"
+        }
+      ]
+    },
+    {
+      "$kind": "Microsoft.OnIntent",
+      "$designer": {
+        "id": "trPcfV",
+        "name": "FinancialOffering"
+      },
+      "intent": "FinancialOffering",
+      "actions": [
+        {
+          "$kind": "Microsoft.SendActivity",
+          "$designer": {
+            "id": "uGVoGA"
+          },
+          "activity": "${SendActivity_uGVoGA()}"
+        },
+        {
+          "$kind": "Microsoft.SendActivity",
+          "$designer": {
+            "id": "AohRjk",
+            "name": "Send a response"
+          },
+          "activity": "${SendActivity_AohRjk()}"
+        }
+      ]
+    },
+    {
+      "$kind": "Microsoft.OnIntent",
+      "$designer": {
+        "id": "ElYGvb",
+        "name": "Electromobility"
+      },
+      "intent": "Electromobility",
+      "actions": [
+        {
+          "$kind": "Microsoft.SendActivity",
+          "$designer": {
+            "id": "T3aYyR"
+          },
+          "activity": "${SendActivity_T3aYyR()}"
+        },
+        {
+          "$kind": "Microsoft.SendActivity",
+          "$designer": {
+            "id": "k2ln4C",
+            "name": "Send a response"
+          },
+          "activity": "${SendActivity_k2ln4C()}"
+        }
+      ]
+    },
+    {
+      "$kind": "Microsoft.OnIntent",
+      "$designer": {
+        "id": "H4CPlx",
+        "name": "AftersalesService"
+      },
+      "intent": "AftersalesService",
+      "actions": [
+        {
+          "$kind": "Microsoft.SendActivity",
+          "$designer": {
+            "id": "z6vUIu"
+          },
+          "activity": "${SendActivity_z6vUIu()}"
+        },
+        {
+          "$kind": "Microsoft.SendActivity",
+          "$designer": {
+            "id": "vIrEK1",
+            "name": "Send a response"
+          },
+          "activity": "${SendActivity_vIrEK1()}"
+        }
+      ]
+    },
+    {
+      "$kind": "Microsoft.OnIntent",
+      "$designer": {
+        "id": "5C91R4",
+        "name": "Newsletter"
+      },
+      "intent": "Newsletter",
+      "actions": [
+        {
+          "$kind": "Microsoft.SendActivity",
+          "$designer": {
+            "id": "VGJcZ6"
+          },
+          "activity": "${SendActivity_VGJcZ6()}"
+        },
+        {
+          "$kind": "Microsoft.SendActivity",
+          "$designer": {
+            "id": "oFqE15",
+            "name": "Send a response"
+          },
+          "activity": "${SendActivity_oFqE15()}"
+        }
+      ]
+    },
+    {
+      "$kind": "Microsoft.OnIntent",
+      "$designer": {
+        "id": "l2UtAl",
+        "name": "TestDrive"
+      },
+      "intent": "TestDrive",
+      "actions": [
+        {
+          "$kind": "Microsoft.TextInput",
+          "$designer": {
+            "id": "oLptAj"
+          },
+          "disabled": false,
+          "maxTurnCount": 3,
+          "alwaysPrompt": false,
+          "allowInterruptions": false,
+          "prompt": "",
+          "unrecognizedPrompt": "",
+          "invalidPrompt": "",
+          "defaultValueResponse": ""
+        },
+        {
+          "$kind": "Microsoft.SendActivity",
+          "$designer": {
+            "id": "YMoQJb"
+          },
+          "activity": "${SendActivity_YMoQJb()}"
+        },
+        {
+          "$kind": "Microsoft.SendActivity",
+          "$designer": {
+            "id": "LoZ8Pt"
+          },
+          "activity": "${SendActivity_LoZ8Pt()}"
+        },
+        {
+          "$kind": "Microsoft.SendActivity",
+          "$designer": {
+            "id": "kuJlZM"
+          },
+          "activity": "${SendActivity_kuJlZM()}"
+        },
+        {
+          "$kind": "Microsoft.SendActivity",
+          "$designer": {
+            "id": "0n0G0W",
+            "name": "Send a response"
+          },
+          "activity": "${SendActivity_0n0G0W()}"
+        }
+      ]
+    }
+  ],
+  "$schema": "https://raw.githubusercontent.com/microsoft/BotFramework-Composer/stable/Composer/packages/server/schemas/sdk.schema",
+  "generator": "BMWCustomerService.lg",
+  "id": "BMWCustomerService",
+  "recognizer": {
+    "$kind": "Microsoft.RegexRecognizer",
+    "intents": [
+      {
+        "intent": "BMWLatest",
+        "pattern": "BMW Latest"
+      },
+      {
+        "intent": "Recommender",
+        "pattern": "Recommender"
+      },
+      {
+        "intent": "General",
+        "pattern": "General"
+      },
+      {
+        "intent": "BuildPrice",
+        "pattern": "Build & Price"
+      },
+      {
+        "intent": "VirtualAppointment",
+        "pattern": "Virtual Appointment"
+      },
+      {
+        "intent": "FinancialOffering",
+        "pattern": "Financial Offering"
+      },
+      {
+        "intent": "Electromobility",
+        "pattern": "Discover Electromobility"
+      },
+      {
+        "intent": "AftersalesService",
+        "pattern": "Aftersales Service"
+      },
+      {
+        "intent": "Newsletter",
+        "pattern": "Newsletter"
+      },
+      {
+        "intent": "TestDrive",
+        "pattern": "Test Drive"
+      }
+    ]
+  }
+}
